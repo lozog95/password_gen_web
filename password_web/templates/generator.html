@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Passwd_gen{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <!-- PASS LENGHT -->
+    <label for="length">Password length</label>
+    <input type="number" name="length" id="length" required>
+      <!-- special characters -->
+
+    <input type="checkbox" name="special" id="special">
+    <label for="special">Special chars</label>
+      <!-- digits -->
+
+    <input type="checkbox" name="numbers" id="numbers">
+    <label for="numbers">Digits</label>
+      <!-- uppercase -->
+
+    <input type="checkbox" name="uppercase" id="uppercase">
+    <label for="uppercase">Uppercase</label>
+      <!-- PASS LENGHT -->
+    <input type="submit" value="Generate">
+  </form>
+  {% if error %}
+    <p class="flash err"><strong>Error:</strong> {{ error }}
+  {% endif %}
+  {% if pwd %}
+    <p class=flash><strong>Your pass:</strong>{{ pwd }}</p>
+  {% endif %}
+{% endblock %}
