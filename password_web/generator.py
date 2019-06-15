@@ -7,7 +7,7 @@ from flask import (
 
 bp = Blueprint('generator', __name__, url_prefix='/')
 
-host = "pass_gen_service:5000"
+host = "password-service:5000"
 
 
 def call_password_service(host, pwd_len, special, numbers, uppercase):
