@@ -36,7 +36,7 @@ environment {
                 stage('Build and deploy image') {
                     steps{
                 script {
-          dockerImage = docker.build registry + ":latest"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
