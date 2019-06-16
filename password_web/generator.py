@@ -4,7 +4,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 
-
+# just a comment to test jenkins trigger
 bp = Blueprint('generator', __name__, url_prefix='/')
 
 host = "password-service:5000"
