@@ -41,6 +41,7 @@ environment {
             dockerImage.push()
           }
         }
+        sh "kubectl set image deployment/password-web password-web=lozog95/pass-gen-web:${BUILD_NUMBER}"
       }
     }
             }
