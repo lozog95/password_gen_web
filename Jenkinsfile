@@ -2,7 +2,7 @@ pipeline {
 environment {
     registry = "lozog95/pass_gen_web"
     registryCredential = 'dockerhub'
-    PATH = "/usr/local/bin:${PATH}"
+    PATH = "$PATH:/usr/local/bin"
 
   }
     agent none
