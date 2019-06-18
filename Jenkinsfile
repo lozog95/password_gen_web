@@ -2,12 +2,13 @@ pipeline {
 environment {
     registry = "lozog95/pass_gen_web"
     registryCredential = 'dockerhub'
-    PATH = "$PATH:/usr/local/bin"
-
   }
     agent none
     stages {
         stage("Init and test") {
+        environment {
+                PATH = "$PATH:/usr/local/bin"
+            }
             agent {
               docker {
               image 'python:3.6.5-alpine'
@@ -33,6 +34,9 @@ environment {
             }
         }
         stage("Build and deploy"){
+        environment {
+                PATH = "$PATH:/usr/local/bin"
+            }
             agent none
             stages {
                 stage('Build and deploy image') {
