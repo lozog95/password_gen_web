@@ -1,0 +1,4 @@
+.pytest_cache/*
+tests/
+venv/
+readme.md
