@@ -34,11 +34,7 @@ environment {
             }
         }
         stage("Build and deploy"){
-        environment {
-                PATH = "$PATH:/usr/local/bin"
-            }
-            agent none
-
+            agent any
                     steps{
                 script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
