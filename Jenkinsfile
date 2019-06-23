@@ -42,7 +42,7 @@ environment {
             dockerImage.push()
           }
         }
-        sh 'docker service update --force password-web'
+        sh "docker service update --image lozog95/pass_gen_web:${BUILD_NUMBER} password-web"
       }
     }
 
