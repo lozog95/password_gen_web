@@ -38,8 +38,7 @@ environment {
                 PATH = "$PATH:/usr/local/bin"
             }
             agent none
-            stages {
-                stage('Build and deploy image') {
+
                     steps{
                 script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -50,8 +49,7 @@ environment {
         sh 'docker service update --force password-web'
       }
     }
-            }
-        }
+
     }
 }
 
