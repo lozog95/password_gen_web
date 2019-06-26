@@ -1,0 +1,4 @@
+Flask==1.0.2
+requests==2.22.0
+pytest==4.6.3
+selenium==3.141.0

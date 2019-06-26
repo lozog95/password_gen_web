@@ -1,0 +1,16 @@
+FROM python:3.6.5-alpine
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN pip install -r requirements_tests.txt
+
+RUN wget -q "https://chromedriver.storage.googleapis.com/75.0.3770.90/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
+    && unzip /tmp/chromedriver.zip -d /usr/bin/ \
+    && rm /tmp/chromedriver.zip \
+    && chmod 777 /usr/bin/chromedriver
+
+ENV QA_HOST http://51.75.63.168:5010/
+
+CMD ["pytest", "-v", "tests/test_ui.py"]
