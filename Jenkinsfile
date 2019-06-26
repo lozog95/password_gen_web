@@ -60,6 +60,9 @@ environment {
                 && rm /tmp/chromedriver.zip \
                 && chmod 777 /usr/bin/chromedriver
                 export QA_HOST=http://51.75.63.168:5010/
+                echo $PATH
+                export PATH=/usr/bin:$PATH
+                echo $PATH
             '''
             sh "pytest -v tests/test_ui.py"
          }
