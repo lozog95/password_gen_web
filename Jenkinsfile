@@ -55,8 +55,10 @@ environment {
          steps {
             sh '''
                 apt-get update && apt-get install python3-distutils -y && apt-get install python3-pip -y
-                python3 -m pip install -r requirements_tests.txt'''
-            sh "python3 -m pytest -v tests/test_ui.py"
+                python3 -m pip install -r requirements_tests.txt
+                export QA_HOST=http://51.75.63.168:5010/
+                python3 -m pytest -v tests/test_ui.py
+                '''
          }
     }
     stage("PRD: Deploy"){
