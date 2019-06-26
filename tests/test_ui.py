@@ -11,7 +11,7 @@ qa_host = os.getenv("QA_HOST")
 class TestUIElements(unittest.TestCase):
     @classmethod
     def setUpClass(self):
-        self.driver = webdriver.Chrome(options=chrome_options)
+        self.driver = webdriver.Chrome(options=chrome_options, executable_path="/usr/bin/chromedriver")
 
     @classmethod
     def tearDownClass(self):
