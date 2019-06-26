@@ -53,8 +53,8 @@ environment {
               }
             }
          steps {
-            sh '''wget https://bootstrap.pypa.io/get-pip.py
-                python3 get-pip.py
+            sh '''
+                apt-get update && apt-get install python3-distutils && apt-get install python3-pip
                 python3 -m pip install -r requirements_tests.txt'''
             sh "python3 -m pytest -v tests/test_ui.py"
          }
