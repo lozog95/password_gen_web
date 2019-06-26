@@ -54,7 +54,7 @@ environment {
             }
          steps {
             sh '''
-                apt-get update && apt-get install python3-distutils && apt-get install python3-pip
+                apt-get update && apt-get install python3-distutils -y && apt-get install python3-pip -y
                 python3 -m pip install -r requirements_tests.txt'''
             sh "python3 -m pytest -v tests/test_ui.py"
          }
