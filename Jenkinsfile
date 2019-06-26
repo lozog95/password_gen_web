@@ -48,23 +48,15 @@ environment {
     stage("QA: Testing"){
         agent {
               docker {
-              image 'python:3.6.5-alpine'
+              image 'selenium/standalone-chrome'
               args '-u root:root'
               }
             }
          steps {
-            sh "pip install -r requirements_tests.txt"
-            sh '''
-                wget -q "https://chromedriver.storage.googleapis.com/75.0.3770.90/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
-                && unzip /tmp/chromedriver.zip -d /usr/bin/ \
-                && rm /tmp/chromedriver.zip \
-                && chmod 777 /usr/bin/chromedriver
-                export QA_HOST=http://51.75.63.168:5010/
-                echo $PATH
-                export PATH=/usr/bin:$PATH
-                echo $PATH
-            '''
-            sh "pytest -v tests/test_ui.py"
+            sh '''wget https://bootstrap.pypa.io/get-pip.py
+                python3 get-pip.py
+                python3 -m pip install -r requirements_tests.txt'''
+            sh "python3 -m pytest -v tests/test_ui.py"
          }
     }
     stage("PRD: Deploy"){
