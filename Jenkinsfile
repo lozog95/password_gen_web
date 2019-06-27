@@ -59,6 +59,7 @@ environment {
                 export QA_HOST=http://51.75.63.168:5010/
                 python3 -m pytest --junitxml=test_ui.xml -v tests/test_ui.py
                 '''
+            junit '*.xml'
          }
 
     }
@@ -73,11 +74,7 @@ environment {
     }
 
     }
-    post {
-              always {
-                junit '*.xml'
-              }
-            }
+
 }
 
 
