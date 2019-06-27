@@ -7,7 +7,7 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 qa_host = os.getenv("QA_HOST")
 
-
+# i'm a comment
 class TestUIElements(unittest.TestCase):
     @classmethod
     def setUpClass(self):
