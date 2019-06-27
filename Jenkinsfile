@@ -57,9 +57,10 @@ environment {
                 apt-get update && apt-get install python3-distutils -y && apt-get install python3-pip -y
                 python3 -m pip install -r requirements_tests.txt
                 export QA_HOST=http://51.75.63.168:5010/
-                python3 -m pytest -v tests/test_ui.py
+                python3 -m pytest --junitxml=test_ui.xml -v tests/test_ui.py
                 '''
          }
+
     }
     stage("PRD: Deploy"){
             agent any
@@ -72,6 +73,11 @@ environment {
     }
 
     }
+    post {
+              always {
+                junit '*.xml'
+              }
+            }
 }
 
 
